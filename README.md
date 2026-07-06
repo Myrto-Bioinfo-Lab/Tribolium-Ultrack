@@ -76,7 +76,6 @@ The workflow was run in a Conda environment. A compact environment specification
 ```text
 environment.yml
 environment_conda_list.txt
-environment_notes.txt
 ```
 
 ## Important scripts
