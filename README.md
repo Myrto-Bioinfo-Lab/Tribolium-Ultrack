@@ -1,43 +1,43 @@
 # Tribolium Serosa Ultrack Motion Workflow
 
-Dieses Repository dokumentiert einen Workflow zur Segmentierung, zum Tracking und zur Bewegungsanalyse einer 2D-Zeitreihe der extraembryonalen Membranen von *Tribolium*. Der Schwerpunkt liegt auf der Bewegung der Serosa, besonders im spaeten Bereich der Zeitreihe vor dem Aufreissen des Gewebes.
+This repository documents a workflow for segmentation, tracking and motion analysis of a 2D time series of the extraembryonic membranes of *Tribolium*. The focus is on serosa motion, especially in the late part of the sequence before tissue rupture.
 
-## Kurzueberblick
+## Overview
 
-Die Zeitreihe umfasst 571 Frames. Zunaechst wurden rohbildbasierte Segmentierungs- und Ultrack-Ansaetze getestet. Diese Raw-only-Varianten dienten als methodische Vergleichsbasis, fuehrten aber zu starker Fragmentierung und waren visuell nicht ausreichend stabil.
+The analysed time series contains 571 frames. Raw-image-based segmentation and Ultrack approaches were tested first. These raw-only variants served as methodological controls, but showed strong fragmentation and were not visually stable enough for the final analysis.
 
-Stabilere Ergebnisse wurden mit labelbasierten Multi-Input-Ansaetzen erreicht. Dabei wurden mehrere Cellpose-/CPSAM-Segmentierungsvarianten als Kandidatenquellen an Ultrack uebergeben.
+More stable results were obtained with label-based multi-input approaches. In these runs, several Cellpose/CPSAM segmentation variants were provided to Ultrack as alternative candidate sources.
 
-Fuer die Originalframes 540--570 wurden mehrere Tracking-Varianten visuell und quantitativ verglichen. Dieses Fenster ist biologisch relevant, da dort die Serosa-Bewegung deutlich zunimmt und sich das Gewebe dem spaeteren Aufreissen naehert.
+The original frames 540--570 were analysed in more detail because this window is biologically relevant: serosa motion increases visibly in this late phase, and the tissue approaches rupture.
 
-## Wichtigste Ergebnisse
+## Main findings
 
-- Raw-only-, Threshold-, Watershed- und reine Konturansaetze waren fuer die vorliegenden Daten nicht ausreichend stabil.
-- Labelbasierte Multi-Input-Ansaetze lieferten kohaerentere Tracking-Ergebnisse.
-- Der Full-Frame-Lauf mit automatisch erzeugten Cellpose-Varianten war statistisch nahezu identisch zu einem Multi-Input-Lauf mit projektspezifischen Referenzlabels.
-- Fuer Frames 540--570 blieb `multi_existing_labels_540_570` der visuell kohaerenteste Referenzlauf.
-- Der unabhaengige Lauf `independent_multi_cpsam_candidates_540_570` ist methodisch wichtig, weil er ohne projektspezifische Referenzlabels und ohne projektspezifisches Cellpose-Modell auskommt.
-- Trackbasierte Bewegungsfelder und Raw-image Optical Flow zeigen aehnliche grobe Bewegungsstrukturen, unterscheiden sich aber lokal und bei Ausreissern.
-- Divergenz, Curl, Gradient Magnitude und Strain Magnitude liefern erste explorative Hinweise auf lokale Expansion, Rotation und Deformation.
+- Raw-only, threshold-based, watershed-based and contour-only approaches were not sufficiently stable for these data.
+- Label-based multi-input approaches produced more coherent tracking results.
+- The full-frame run based on automatically generated Cellpose variants was statistically very similar to a multi-input run using project-specific reference labels.
+- For frames 540--570, `multi_existing_labels_540_570` remained the most coherent visual reference run.
+- The independent run `independent_multi_cpsam_candidates_540_570` is methodologically important because it does not rely on project-specific reference labels or a project-specific Cellpose model.
+- Track-based velocity fields and raw-image optical flow show similar global motion patterns, but differ locally and in the presence of outliers.
+- Divergence, curl, gradient magnitude and strain magnitude provide exploratory indicators of local expansion, rotation and deformation.
 
-## Repository-Struktur
+## Repository structure
 
 ```text
-configs/          YAML-Konfigurationen der dokumentierten Ultrack-Runs
-scripts/          Skripte fuer Tracking, Export, Bewegungsfelder und Plots
-documentation/    Finaler Workflow-Bericht als PDF
-results/          Tabellen, Summaries und ausgewaehlte CSV-Ergebnisse
-plots/            Finale Plots, Quiver-Bilder und Heatmaps
-assets/videos/    Komprimierte Videos fuer Tracking und Bewegungsfelder
+configs/          YAML configuration files for the documented Ultrack runs
+scripts/          Scripts for tracking, export, velocity fields and plots
+documentation/    Final workflow reports as PDF files
+results/          Tables, summaries and selected CSV outputs
+plots/            Final plots, quiver images and heatmaps
+assets/videos/    Compressed videos for tracking and motion fields
 ```
 
-## Datenhinweis
+## Data note
 
-Die originalen Rohbilder und grossen Zwischendaten sind nicht Bestandteil dieses Repositories. Nicht enthalten sind Rohbild-TIFFs, vollstaendige Cellpose-Maskenordner, Ultrack-Datenbanken, Zarr-/NPY-/NPZ-Zwischendateien, Conda-Umgebungen und temporaere Testausgaben.
+The original raw images and large intermediate data are not included in this repository. Excluded data include raw TIFF files, full Cellpose mask folders, Ultrack databases, Zarr/NPY/NPZ intermediate files, Conda environments and temporary test outputs.
 
-Um den kompletten Workflow neu aus den Rohdaten auszufuehren, muessen die Originaldaten lokal verfuegbar sein und Pfade in den YAML-Konfigurationen gegebenenfalls angepasst werden.
+To rerun the complete workflow from raw data, the original image data must be available locally and paths in the YAML configuration files may need to be adapted.
 
-## Zentrale Ergebnisdateien
+## Key result files
 
 ```text
 results/tables/run_summary_comparison.csv
@@ -51,14 +51,14 @@ results/derivatives/
 
 ## Videos
 
-Full-Frame Tracking Overlays:
+Full-frame tracking overlays:
 
 ```text
 assets/videos/full_frame_tracks/multi_cellpose_variants_no_baseline_tracks_overlay_compressed.mp4
 assets/videos/full_frame_tracks/multi_cellpose_only_tracks_overlay_compressed.mp4
 ```
 
-Bewegungsfeld-Videos fuer Frames 540--570:
+Motion-field videos for frames 540--570:
 
 ```text
 assets/videos/motion_fields/multi_existing_labels_540_570_scaled_quiver.mp4
@@ -66,9 +66,9 @@ assets/videos/motion_fields/independent_multi_cpsam_candidates_scaled_quiver.mp4
 assets/videos/motion_fields/raw_optical_flow_scaled_quiver.mp4
 ```
 
-Bei Quiver-Videos und Quiver-Plots wurden die Pfeillaengen zur besseren Sichtbarkeit visuell skaliert. Die numerischen Geschwindigkeitswerte in den CSV-Dateien bleiben unveraendert in px/Frame.
+For the quiver videos and quiver plots, arrow lengths were visually scaled to improve readability. The numerical velocity values in the CSV files remain unchanged in px/frame.
 
-## Wichtige Skripte
+## Important scripts
 
 ```text
 scripts/run_ultrack_pipeline.py
@@ -84,22 +84,22 @@ scripts/plot_velocity_quiver_scaled.py
 scripts/view_velocity_field_napari.py
 ```
 
+## Additional documentation
 
-Zusaetzlich ist ein fokussierter Full-Frame-Tracking-Vergleich enthalten:
+A focused full-frame tracking comparison is included as:
 
 ```text
 documentation/full_frame_tracking_comparison.pdf
 ```
 
-## Interpretation
-
-Globale Trackstatistiken sind hilfreich, aber nicht allein ausreichend. Deshalb wurden Statistik, visuelle Kontrolle, Bewegungsfelder und derivative Groessen gemeinsam betrachtet.
-
-Die Analyse klaert die mechanische Ursache des Aufreissens nicht abschliessend. Sie liefert aber eine reproduzierbare Grundlage, um lokale Bewegung, Expansion, Rotation und Deformation der Serosa vor dem Aufreissen weiter zu untersuchen.
-
-## Finaler Bericht
+The final workflow report is included as:
 
 ```text
 documentation/tribolium_ultrack_workflow_protokoll_final.pdf
 ```
 
+## Interpretation
+
+Global track statistics are useful but not sufficient on their own. For this reason, quantitative statistics, visual inspection, velocity fields and derivative-based motion descriptors were considered together.
+
+The analysis does not fully explain the mechanical cause of tissue rupture. It provides a reproducible basis for further investigation of local motion, expansion, rotation and deformation of the serosa before rupture.
