@@ -33,7 +33,7 @@ assets/videos/    Compressed videos for tracking and motion fields
 
 ## Data note
 
-The original raw images and large intermediate data are not included in this repository. Excluded data include raw TIFF files, full Cellpose mask folders, Ultrack databases, Zarr/NPY/NPZ intermediate files, Conda environments and temporary test outputs.
+The repository contains scripts, configurations, compact result files, plots, videos and documentation. Large raw data and intermediate processing outputs are not included, such as the original TIFF image sequence, full Cellpose output folders, Ultrack databases, Zarr/NPY/NPZ files, Conda environments and temporary test outputs.
 
 To rerun the complete workflow from raw data, the original image data must be available locally and paths in the YAML configuration files may need to be adapted.
 
@@ -67,6 +67,17 @@ assets/videos/motion_fields/raw_optical_flow_scaled_quiver.mp4
 ```
 
 For the quiver videos and quiver plots, arrow lengths were visually scaled to improve readability. The numerical velocity values in the CSV files remain unchanged in px/frame.
+
+
+## Environment
+
+The workflow was run in a Conda environment. A compact environment specification and package list are included:
+
+```text
+environment.yml
+environment_conda_list.txt
+environment_notes.txt
+```
 
 ## Important scripts
 
