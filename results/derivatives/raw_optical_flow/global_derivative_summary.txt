@@ -1,0 +1,33 @@
+Velocity derivative summary
+===========================
+
+Input: <PROJECT_ROOT>/Tribolium_Daten/optical_flow_540_570/raw_optical_flow_binned.csv
+Bin size: 80 px
+Frames: 0-29
+Total derivative vectors: 8558
+
+Global statistics
+-----------------
+Mean speed: 5.128822 px/frame
+Median speed: 3.166157 px/frame
+Mean absolute divergence: 0.02544082 1/frame
+Median absolute divergence: 0.01378143 1/frame
+Mean absolute curl: 0.02036618 1/frame
+Median absolute curl: 0.01193110 1/frame
+Mean gradient magnitude: 0.03814776 1/frame
+Median gradient magnitude: 0.02509683 1/frame
+Mean strain magnitude: 0.03344115 1/frame
+Median strain magnitude: 0.02147804 1/frame
+
+Most active frames by mean strain magnitude
+-------------------------------------------
+t=029: mean_strain=0.20831630, mean_abs_div=0.17963482, mean_abs_curl=0.09114568, mean_speed=30.978366
+t=028: mean_strain=0.07296654, mean_abs_div=0.05694293, mean_abs_curl=0.05422722, mean_speed=12.121731
+t=021: mean_strain=0.05313286, mean_abs_div=0.03466769, mean_abs_curl=0.03944461, mean_speed=8.753303
+t=007: mean_strain=0.04979651, mean_abs_div=0.03901541, mean_abs_curl=0.03120569, mean_speed=7.415272
+t=020: mean_strain=0.04753837, mean_abs_div=0.03689165, mean_abs_curl=0.02045112, mean_speed=5.690234
+t=014: mean_strain=0.03976468, mean_abs_div=0.02760511, mean_abs_curl=0.02985588, mean_speed=6.245761
+t=000: mean_strain=0.03483798, mean_abs_div=0.02696213, mean_abs_curl=0.01895244, mean_speed=5.783457
+t=008: mean_strain=0.03380149, mean_abs_div=0.02590700, mean_abs_curl=0.02081498, mean_speed=5.354736
+t=015: mean_strain=0.03210582, mean_abs_div=0.02221885, mean_abs_curl=0.02337551, mean_speed=4.659021
+t=022: mean_strain=0.03160475, mean_abs_div=0.02306301, mean_abs_curl=0.01888186, mean_speed=5.989275

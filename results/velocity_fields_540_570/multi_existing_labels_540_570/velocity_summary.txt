@@ -1,0 +1,15 @@
+Run: multi_existing_labels_540_570
+Input tracks: <PROJECT_ROOT>/Tribolium_Daten/runs/multi_existing_labels_540_570/tracks.csv
+Image size: 1612 x 1061
+Bin size: 80
+Max step distance: 80.0
+Min vectors per bin: 3
+
+Number of step vectors: 24120
+Number of binned vectors: 5285
+Mean step speed: 5.9117
+Median step speed: 4.4721
+Max step speed: 29.8329
+Mean binned speed: 5.0125
+Median binned speed: 4.1767
+Max binned speed: 22.3731

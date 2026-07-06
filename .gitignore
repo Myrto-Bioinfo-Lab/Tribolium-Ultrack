@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environments
+miniconda3/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Large raw/intermediate data
+Tribolium_Daten/
+*.zarr/
+*.npy
+*.npz
+*.tif
+*.tiff
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs and temporary outputs
+*.log
+logs/
+tmp/
+temp/
+archive_*/
+configs_backup_before_neutral_names/
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# OS/editor
+.DS_Store
+*~

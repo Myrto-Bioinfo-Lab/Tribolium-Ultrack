@@ -1,0 +1,15 @@
+Run: single_cpsam_d55
+Input tracks: <PROJECT_ROOT>/Tribolium_Daten/runs/independent_cellpose_cpsam_diameter55_540_570/tracks.csv
+Image size: 1612 x 1061
+Bin size: 80
+Max step distance: 80.0
+Min vectors per bin: 3
+
+Number of step vectors: 19253
+Number of binned vectors: 4022
+Mean step speed: 5.6052
+Median step speed: 4.4721
+Max step speed: 29.9666
+Mean binned speed: 4.7808
+Median binned speed: 3.9051
+Max binned speed: 20.3255

@@ -1,0 +1,5 @@
+run,track_points,tracks,first_frame,last_frame,mean_track_length,median_track_length,max_track_length,tracks_le_1,tracks_le_2,tracks_le_5,tracks_le_10,tracks_ge_100,tracks_ge_300,tracks_ge_571,active_tracks_mean,active_tracks_min,active_tracks_max,top_fragmentation_frame,top_fragmentation_events
+provided_reference_labels,504700,9983,0,570,50.56,7.0,571,572,2061,4371,6071,1108,600,112,883.8879159369527,545,928,562,241
+threshold_robust_full_border,736949,83785,0,570,8.8,5.0,483,8600,19684,43145,62261,110,2,0,1290.6287215411558,1133,1346,569,454
+multi_cellpose_only_all_frames,530169,7696,0,570,68.89,7.0,571,737,1761,3293,4567,1128,727,227,928.492119089317,712,952,569,263
+multi_cellpose_variants_no_baseline_all_frames,530639,7414,0,570,71.57,7.0,571,685,1661,3094,4340,1122,736,236,929.3152364273205,712,953,569,263

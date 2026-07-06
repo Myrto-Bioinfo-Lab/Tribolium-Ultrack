@@ -1,0 +1,15 @@
+Run: u4b_tribolium_params_sigma30
+Input tracks: <PROJECT_ROOT>/Tribolium_Daten/runs/u4b_tribolium_params_sigma30_540_570/tracks.csv
+Image size: 1612 x 1061
+Bin size: 80
+Max step distance: 80.0
+Min vectors per bin: 3
+
+Number of step vectors: 41333
+Number of binned vectors: 6808
+Mean step speed: 1.6034
+Median step speed: 1.0000
+Max step speed: 19.9249
+Mean binned speed: 1.0540
+Median binned speed: 0.7071
+Max binned speed: 9.4281

@@ -1,0 +1,33 @@
+Velocity derivative summary
+===========================
+
+Input: <PROJECT_ROOT>/Tribolium_Daten/velocity_fields_540_570/multi_existing_labels_540_570/binned_velocity_field.csv
+Bin size: 80 px
+Frames: 0-29
+Total derivative vectors: 5285
+
+Global statistics
+-----------------
+Mean speed: 5.012538 px/frame
+Median speed: 4.176655 px/frame
+Mean absolute divergence: 0.02658076 1/frame
+Median absolute divergence: 0.01979167 1/frame
+Mean absolute curl: 0.02709996 1/frame
+Median absolute curl: 0.01927083 1/frame
+Mean gradient magnitude: 0.04336810 1/frame
+Median gradient magnitude: 0.03630743 1/frame
+Mean strain magnitude: 0.03650479 1/frame
+Median strain magnitude: 0.03043083 1/frame
+
+Most active frames by mean strain magnitude
+-------------------------------------------
+t=021: mean_strain=0.07084853, mean_abs_div=0.04695154, mean_abs_curl=0.05159445, mean_speed=8.453834
+t=029: mean_strain=0.06411913, mean_abs_div=0.04191146, mean_abs_curl=0.05495763, mean_speed=9.690442
+t=028: mean_strain=0.06102668, mean_abs_div=0.04082917, mean_abs_curl=0.05013407, mean_speed=7.112951
+t=007: mean_strain=0.05496187, mean_abs_div=0.03847549, mean_abs_curl=0.04603039, mean_speed=7.658142
+t=014: mean_strain=0.05054984, mean_abs_div=0.03552621, mean_abs_curl=0.04009902, mean_speed=7.531845
+t=022: mean_strain=0.04904663, mean_abs_div=0.03714864, mean_abs_curl=0.03203766, mean_speed=7.604469
+t=000: mean_strain=0.04865035, mean_abs_div=0.03826874, mean_abs_curl=0.03081367, mean_speed=7.171244
+t=020: mean_strain=0.04800484, mean_abs_div=0.03713813, mean_abs_curl=0.03425694, mean_speed=6.275692
+t=016: mean_strain=0.04491769, mean_abs_div=0.03545975, mean_abs_curl=0.02783781, mean_speed=7.463385
+t=008: mean_strain=0.04338567, mean_abs_div=0.03382859, mean_abs_curl=0.03013908, mean_speed=6.604733

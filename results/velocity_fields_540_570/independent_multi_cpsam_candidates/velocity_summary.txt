@@ -1,0 +1,15 @@
+Run: independent_multi_cpsam_candidates
+Input tracks: <PROJECT_ROOT>/Tribolium_Daten/runs/independent_multi_cpsam_candidates_540_570/tracks.csv
+Image size: 1612 x 1061
+Bin size: 80
+Max step distance: 80.0
+Min vectors per bin: 3
+
+Number of step vectors: 22357
+Number of binned vectors: 4844
+Mean step speed: 5.7798
+Median step speed: 4.4721
+Max step speed: 29.7321
+Mean binned speed: 4.9238
+Median binned speed: 4.0360
+Max binned speed: 20.8147

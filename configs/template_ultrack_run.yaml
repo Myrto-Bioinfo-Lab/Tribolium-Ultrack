@@ -1,0 +1,119 @@
+# Template configuration for one Ultrack experiment.
+# The GUI/app can later read and write this file.
+
+name: template_ultrack_run
+
+input:
+  input_dir: ../Tribolium_Daten/cylinder3_projections
+  file_pattern: "*.tif"
+  n_frames: null
+
+  crop:
+    enabled: false
+    y_start: null
+    y_end: null
+    x_start: null
+    x_end: null
+
+output:
+  output_dir: ../Tribolium_Daten/runs/template_ultrack_run
+  overwrite: true
+
+pipeline:
+  # Possible modes planned:
+  # raw_sobel
+  # ultrack_imgproc
+  # cellpose_labels
+  # combined_sources
+  mode: raw_sobel
+
+normalization:
+  enabled: true
+  percentile_low: 1
+  percentile_high: 99
+  gamma: 1.0
+
+raw_sobel:
+  gaussian_sigma: 1.0
+  threshold: 0.05
+  min_size: 500
+  hole_area_threshold: 10000
+
+ultrack_imgproc:
+  # These fields are placeholders for the official Ultrack preprocessing functions.
+  use_detect_foreground: true
+  use_robust_invert: true
+
+cellpose:
+  enabled: false
+  model: provided_reference_model
+  model_path: ../Tribolium_Daten/Cellpose_model_Tribolium_Final_251119
+  diameter: 57.5
+  flow_threshold: 0.3
+  cellprob_threshold: -0.5
+  use_gpu: true
+  save_png: false
+  save_npy: false
+  use_existing_masks: false
+  masks_dir: null
+
+preprocessing:
+  border:
+    enabled: false
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+ultrack:
+  min_area: 500
+  max_area: 10000
+  max_distance: 30
+  max_neighbors: 5
+  min_frontier: null
+
+export:
+  save_raw_norm: true
+  save_foreground: true
+  save_contours: true
+  save_tracks_csv: true
+  save_analysis_plots: true
+  save_run_info: true
+  save_config_used: true
+  save_log: true
+
+analysis:
+  early_frame_start: 0
+  early_frame_end: 50
+  middle_frame_start: 250
+  middle_frame_end: 300
+  late_frame_start: 520
+  late_frame_end: 570
+
+  short_track_thresholds: [5, 10]
+  long_track_thresholds: [100, 300, 500]
+
+  border_analysis:
+    enabled: true
+    top: 50
+    bottom: 50
+    left: 50
+    right: 100
+
+notes:
+  description: "Template configuration for creating new Ultrack experiment YAML files."
+
+  documentation: |
+    This file is a reusable template for Ultrack experiments. It defines the common structure used
+    by the other configuration files, including input paths, optional cropping, output settings,
+    pipeline mode, preprocessing parameters, Ultrack parameters, export options, and analysis
+    settings.
+
+    The default pipeline mode in this template is raw_sobel. The Cellpose block is included as a
+    shared configuration section, but Cellpose is not executed unless cellpose.enabled is set to
+    true in a copied experiment configuration.
+
+    For a new experiment, this file should be copied and then adjusted by changing the run name,
+    output directory, pipeline mode, input sources, and the relevant preprocessing or tracking
+    parameters.
+

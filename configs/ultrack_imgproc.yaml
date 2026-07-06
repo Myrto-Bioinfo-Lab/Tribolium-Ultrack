@@ -1,0 +1,128 @@
+# Template configuration for one Ultrack experiment.
+# The GUI/app can later read and write this file.
+
+name: ultrack_imgproc
+
+input:
+  input_dir: ../Tribolium_Daten/cylinder3_projections
+  file_pattern: "*.tif"
+  n_frames: 5
+
+  crop:
+    enabled: false
+    y_start: null
+    y_end: null
+    x_start: null
+    x_end: null
+
+output:
+  output_dir: ../Tribolium_Daten/runs/ultrack_imgproc
+  overwrite: true
+
+pipeline:
+  # Possible modes planned:
+  # raw_sobel
+  # ultrack_imgproc
+  # cellpose_labels
+  # combined_sources
+  mode: ultrack_imgproc
+
+normalization:
+  enabled: true
+  percentile_low: 1
+  percentile_high: 99
+  gamma: 1.0
+
+raw_sobel:
+  gaussian_sigma: 1.0
+  threshold: 0.05
+  min_size: 500
+  hole_area_threshold: 10000
+
+ultrack_imgproc:
+  # These fields are placeholders for the official Ultrack preprocessing functions.
+  use_detect_foreground: true
+  use_robust_invert: true
+  
+  detect_foreground:
+    sigma: 15.0
+    remove_hist_mode: false
+    min_foreground: 0.0
+
+  robust_invert:
+    sigma: 1.0
+    lower_quantile: null
+    upper_quantile: 0.9999
+
+cellpose:
+  enabled: false
+  model: provided_reference_model
+  model_path: ../Tribolium_Daten/Cellpose_model_Tribolium_Final_251119
+  diameter: 57.5
+  flow_threshold: 0.3
+  cellprob_threshold: -0.5
+  use_gpu: true
+  save_png: false
+  save_npy: false
+  use_existing_masks: false
+  masks_dir: null
+
+preprocessing:
+  border:
+    enabled: false
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+ultrack:
+  min_area: 500
+  max_area: 10000
+  max_distance: 30
+  max_neighbors: 5
+  min_frontier: null
+
+export:
+  save_raw_norm: true
+  save_foreground: true
+  save_contours: true
+  save_tracks_csv: true
+  save_analysis_plots: true
+  save_run_info: true
+  save_config_used: true
+  save_log: true
+
+analysis:
+  early_frame_start: 0
+  early_frame_end: 50
+  middle_frame_start: 250
+  middle_frame_end: 300
+  late_frame_start: 520
+  late_frame_end: 570
+
+  short_track_thresholds: [5, 10]
+  long_track_thresholds: [100, 300, 500]
+
+  border_analysis:
+    enabled: true
+    top: 50
+    bottom: 50
+    left: 50
+    right: 100
+
+notes:
+  description: "Small 5-frame raw-image-based Ultrack test using the ultrack_imgproc preprocessing mode."
+
+  documentation: |
+    This configuration was used for a small raw-image-based Ultrack test on the first 5 frames of
+    the image sequence. The input images were read from the cylinder3_projections folder. No
+    precomputed label masks were used as direct segmentation input.
+
+    The raw images were normalized using the 1st and 99th intensity percentiles with gamma = 1.0.
+    The pipeline mode was ultrack_imgproc. In this mode, detect_foreground and robust_invert were
+    enabled to generate foreground and contour/boundary information for Ultrack.
+
+    No crop and no border mask were applied in this configuration. Cellpose was not executed because
+    cellpose.enabled is set to false. The run used min_area = 500, max_area = 10000,
+    max_distance = 30, and max_neighbors = 5.
+

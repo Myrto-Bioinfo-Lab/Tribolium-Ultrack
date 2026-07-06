@@ -1,0 +1,131 @@
+# Configuration for full-image threshold_robust Ultrack run with border mask.
+# The GUI/app can later read and write this file.
+
+name: u3c_threshold005_sigma20_540_570
+
+input:
+  input_dir: ../Tribolium_Daten/cylinder3_projections
+  file_pattern: "*.tif"
+  n_frames: null
+  start_frame: 540
+  end_frame: 570
+
+  crop:
+    enabled: false
+    y_start: null
+    y_end: null
+    x_start: null
+    x_end: null
+
+output:
+  output_dir: ../Tribolium_Daten/runs/u3c_threshold005_sigma20_540_570
+  overwrite: true
+
+pipeline:
+  # Possible modes planned:
+  # raw_sobel
+  # ultrack_imgproc
+  # cellpose_labels
+  # combined_sources
+  mode: threshold_robust
+
+normalization:
+  enabled: true
+  percentile_low: 1
+  percentile_high: 99
+  gamma: 1.0
+
+raw_sobel:
+  gaussian_sigma: 1.0
+  threshold: 0.05
+  min_size: 500
+  hole_area_threshold: 10000
+
+ultrack_imgproc:
+  # These fields are placeholders for the official Ultrack preprocessing functions.
+  use_detect_foreground: false
+  use_robust_invert: true
+  
+  detect_foreground:
+    sigma: 15.0
+    remove_hist_mode: false
+    min_foreground: 0.0
+
+  robust_invert:
+    sigma: 2.0
+    lower_quantile: null
+    upper_quantile: 0.9999
+
+cellpose:
+  enabled: false
+  model: provided_reference_model
+  model_path: ../Tribolium_Daten/Cellpose_model_Tribolium_Final_251119
+  diameter: 57.5
+  flow_threshold: 0.3
+  cellprob_threshold: -0.5
+  use_gpu: true
+  save_png: false
+  save_npy: false
+  use_existing_masks: false
+  masks_dir: null
+
+preprocessing:
+  border:
+    enabled: true
+    top: 40
+    bottom: 40
+    left: 40
+    right: 90
+
+ultrack:
+  min_area: 500
+  max_area: 10000
+  max_distance: 30
+  max_neighbors: 5
+  min_frontier: null
+
+export:
+  save_raw_norm: true
+  save_foreground: true
+  save_contours: true
+  save_tracks_csv: true
+  save_analysis_plots: true
+  save_run_info: true
+  save_config_used: true
+  save_log: true
+
+analysis:
+  early_frame_start: 0
+  early_frame_end: 50
+  middle_frame_start: 250
+  middle_frame_end: 300
+  late_frame_start: 520
+  late_frame_end: 570
+
+  short_track_thresholds: [5, 10]
+  long_track_thresholds: [100, 300, 500]
+
+  border_analysis:
+    enabled: true
+    top: 50
+    bottom: 50
+    left: 50
+    right: 100
+  
+notes:
+  description: "U3c raw-image-based Ultrack test on frames 540-570 using threshold = 0.05, robust_invert sigma = 2.0, and a border mask."
+
+  documentation: |
+    This configuration was used for a late-frame raw-image-based Ultrack test on frames 540 to 570.
+    The input images were read from the cylinder3_projections folder. No precomputed label masks
+    were used as direct segmentation input.
+
+    The pipeline mode was threshold_robust. The raw images were normalized using the 1st and 99th
+    intensity percentiles with gamma = 1.0. The active preprocessing parameters were
+    raw_sobel.threshold = 0.05, detect_foreground.sigma = 15.0, and robust_invert.sigma = 2.0.
+
+    A border mask was applied with 40 pixels excluded at the top, bottom, and left borders and
+    90 pixels excluded at the right border. No crop was applied. Cellpose was not executed because
+    cellpose.enabled is set to false.
+
+    The run used min_area = 500, max_area = 10000, max_distance = 30, and max_neighbors = 5.

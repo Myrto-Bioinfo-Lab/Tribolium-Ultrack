@@ -1,0 +1,21 @@
+Track-based velocity field summary
+==================================
+
+Input tracks.csv: <PROJECT_ROOT>/Tribolium_Daten/runs/multi_cellpose_variants_no_baseline_all_frames/tracks.csv
+Bin size: 80
+Frame range in step vectors: 0-569
+Number of frame transitions: 570
+
+Step vectors: 523225
+Step mean speed: 2.051208 px/frame
+Step median speed: 1.414214 px/frame
+Step max speed: 29.966648 px/frame
+Step q95 speed: 6.708204 px/frame
+Step q99 speed: 13.038405 px/frame
+
+Binned vectors: 151098
+Binned mean speed: 2.177401 px/frame
+Binned median speed: 1.414214 px/frame
+Binned max speed: 29.966648 px/frame
+Binned q95 speed: 6.649161 px/frame
+Binned q99 speed: 13.009801 px/frame

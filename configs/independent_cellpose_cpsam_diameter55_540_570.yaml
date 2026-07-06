@@ -1,0 +1,122 @@
+# Configuration for an independent Cellpose-cpsam label-based Ultrack test.
+# This run does not use provided/reference labels and does not use the provided project-specific Cellpose model.
+
+name: independent_cellpose_cpsam_diameter55_540_570
+
+input:
+  input_dir: ../Tribolium_Daten/independent_cellpose_default_diameter55_540_570
+  file_pattern: "*_cp_masks.png"
+  n_frames: null
+  start_frame: 0
+  end_frame: 30
+
+  crop:
+    enabled: false
+    y_start: null
+    y_end: null
+    x_start: null
+    x_end: null
+
+output:
+  output_dir: ../Tribolium_Daten/runs/independent_cellpose_cpsam_diameter55_540_570
+  overwrite: true
+
+pipeline:
+  mode: existing_labels
+
+existing_labels:
+  labels_to_contours_sigma: 1.0
+
+normalization:
+  enabled: true
+  percentile_low: 1
+  percentile_high: 99
+  gamma: 1.0
+
+raw_sobel:
+  gaussian_sigma: 1.0
+  threshold: 0.05
+  min_size: 500
+  hole_area_threshold: 10000
+
+ultrack_imgproc:
+  use_detect_foreground: false
+  use_robust_invert: true
+
+  detect_foreground:
+    sigma: 15.0
+    remove_hist_mode: false
+    min_foreground: 0.0
+
+  robust_invert:
+    sigma: 1.0
+    lower_quantile: null
+    upper_quantile: 0.9999
+
+cellpose:
+  enabled: false
+  model: cpsam
+  model_path: null
+  diameter: 55
+  flow_threshold: null
+  cellprob_threshold: null
+  use_gpu: true
+  save_png: true
+  save_npy: false
+  use_existing_masks: true
+  masks_dir: ../Tribolium_Daten/independent_cellpose_default_diameter55_540_570
+
+preprocessing:
+  border:
+    enabled: false
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+ultrack:
+  min_area: 500
+  max_area: 10000
+  max_distance: 30
+  max_neighbors: 5
+  min_frontier: null
+
+export:
+  save_raw_norm: false
+  save_foreground: false
+  save_contours: false
+  save_tracks_csv: true
+  save_analysis_plots: true
+  save_run_info: true
+  save_config_used: true
+  save_log: true
+
+analysis:
+  early_frame_start: 0
+  early_frame_end: 30
+  middle_frame_start: 0
+  middle_frame_end: 30
+  late_frame_start: 0
+  late_frame_end: 30
+
+  short_track_thresholds: [5, 10]
+  long_track_thresholds: [20, 30]
+
+  border_analysis:
+    enabled: true
+    top: 50
+    bottom: 50
+    left: 50
+    right: 100
+
+notes:
+  description: "Independent label-based Ultrack test on original frames 540-570 using Cellpose cpsam masks generated without the provided project-specific Cellpose model."
+
+  documentation: |
+    This configuration uses Cellpose masks generated from the raw images of original frames 540-570.
+    The Cellpose run was started without the provided project-specific pretrained model path. The
+    Cellpose log shows that the cpsam model was downloaded and used by Cellpose. The resulting masks
+    are used here as existing label masks for Ultrack.
+
+    The internal Ultrack frame range is 0-30 because the input directory contains only the 31 selected
+    mask files corresponding to original frames 540-570.

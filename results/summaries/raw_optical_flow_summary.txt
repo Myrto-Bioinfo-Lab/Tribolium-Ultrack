@@ -1,0 +1,16 @@
+Raw-image optical flow summary
+==============================
+
+Frames: original 540-570
+Number of frame pairs: 30
+Image shape: (1612, 1061)
+Downscale: 0.5
+Bin size: 80
+Foreground threshold: 0.05
+Minimum pixels per bin: 20
+Flip sign: False
+
+Number of binned optical-flow vectors: 8558
+Mean speed: 5.1288 px/frame
+Median speed: 3.1662 px/frame
+Max speed: 98.4460 px/frame

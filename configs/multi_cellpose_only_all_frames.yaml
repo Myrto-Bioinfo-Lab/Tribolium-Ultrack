@@ -1,0 +1,161 @@
+# Template configuration for one Ultrack experiment.
+# The GUI/app can later read and write this file.
+
+name: multi_cellpose_only_all_frames
+
+input:
+  input_dir: ../Tribolium_Daten/cellpose_output
+  file_pattern: "*_cp_masks.png"
+  n_frames: null
+  start_frame: 0
+  end_frame: 570
+
+  crop:
+    enabled: false
+    y_start: null
+    y_end: null
+    x_start: null
+    x_end: null
+
+output:
+  output_dir: ../Tribolium_Daten/runs/multi_cellpose_only_all_frames
+  overwrite: true
+
+pipeline:
+  # Possible modes planned:
+  # raw_sobel
+  # ultrack_imgproc
+  # cellpose_labels
+  # combined_sources
+  mode: multi_existing_labels
+  
+multi_existing_labels:
+  labels_to_contours_sigma: 1.0
+  
+  sources:
+    - name: cellpose_output
+      input_dir: ../Tribolium_Daten/cellpose_output
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_1
+      input_dir: ../Tribolium_Daten/cellpose_output_1
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_2
+      input_dir: ../Tribolium_Daten/cellpose_output_2
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_3
+      input_dir: ../Tribolium_Daten/cellpose_output_3
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_4
+      input_dir: ../Tribolium_Daten/cellpose_output_4
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_5
+      input_dir: ../Tribolium_Daten/cellpose_output_5
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_output_6
+      input_dir: ../Tribolium_Daten/cellpose_output_6
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_gamma_0.7
+      input_dir: ../Tribolium_Daten/cellpose_gamma_0.7
+      file_pattern: "*_cp_masks.png"
+
+    - name: cellpose_gamma_0.5
+      input_dir: ../Tribolium_Daten/cellpose_gamma_0.5
+      file_pattern: "*_cp_masks.png"
+
+normalization:
+  enabled: true
+  percentile_low: 1
+  percentile_high: 99
+  gamma: 1.0
+
+raw_sobel:
+  gaussian_sigma: 1.0
+  threshold: 0.05
+  min_size: 500
+  hole_area_threshold: 10000
+
+ultrack_imgproc:
+  # These fields are placeholders for the official Ultrack preprocessing functions.
+  use_detect_foreground: true
+  use_robust_invert: true
+
+cellpose:
+  enabled: false
+  model: cellpose_only_unused
+  model_path: ../Tribolium_Daten/Cellpose_model_Tribolium_Final_251119
+  diameter: 57.5
+  flow_threshold: 0.3
+  cellprob_threshold: -0.5
+  use_gpu: false
+  save_png: false
+  save_npy: false
+  use_existing_masks: true
+  masks_dir: ../Tribolium_Daten/cellpose_output
+
+preprocessing:
+  border:
+    enabled: false
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+ultrack:
+  min_area: 500
+  max_area: 10000
+  max_distance: 30
+  max_neighbors: 5
+  min_frontier: null
+
+export:
+  save_raw_norm: false
+  save_foreground: false
+  save_contours: false
+  save_tracks_csv: true
+  save_analysis_plots: true
+  save_run_info: true
+  save_config_used: true
+  save_log: true
+
+analysis:
+  early_frame_start: 0
+  early_frame_end: 50
+  middle_frame_start: 250
+  middle_frame_end: 300
+  late_frame_start: 520
+  late_frame_end: 570
+
+  short_track_thresholds: [5, 10]
+  long_track_thresholds: [100, 300, 500]
+
+  border_analysis:
+    enabled: true
+    top: 50
+    bottom: 50
+    left: 50
+    right: 100
+
+notes:
+  description: "Full-frame multi-input Ultrack run using Cellpose-generated label-mask sources, including a reproduced baseline Cellpose output and additional parameter- and gamma-varied Cellpose outputs."
+
+  documentation: |
+    This configuration was used for a full-frame multi-input Ultrack run over frames 0 to 570.
+    Multiple existing Cellpose-generated label-mask
+    folders were used as segmentation candidate sources.
+
+    The provided/reference label-mask folder cellpose_label_images was not included as a direct
+    Ultrack input source, but the source cellpose_output was included and corresponds to a reproduced
+    baseline Cellpose output generated with the provided project-specific Cellpose model and the
+    baseline parameters diameter = 57.5, flow_threshold = 0.3, and cellprob_threshold = -0.5.
+
+    Additional input sources were the parameter-varied Cellpose outputs cellpose_output_1 to
+    cellpose_output_6 and the gamma-preprocessed Cellpose outputs cellpose_gamma_0.7 and
+    cellpose_gamma_0.5. The label masks were converted to foreground and contour/boundary
+    information using labels_to_contours_sigma = 1.0.

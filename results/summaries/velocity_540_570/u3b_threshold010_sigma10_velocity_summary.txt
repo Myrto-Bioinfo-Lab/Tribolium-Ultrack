@@ -1,0 +1,15 @@
+Run: u3b_threshold010_sigma10
+Input tracks: <PROJECT_ROOT>/Tribolium_Daten/runs/u3b_threshold010_sigma10_540_570/tracks.csv
+Image size: 1612 x 1061
+Bin size: 80
+Max step distance: 80.0
+Min vectors per bin: 3
+
+Number of step vectors: 30773
+Number of binned vectors: 6197
+Mean step speed: 5.6552
+Median step speed: 4.1231
+Max step speed: 29.8329
+Mean binned speed: 3.2001
+Median binned speed: 2.7203
+Max binned speed: 18.4089
