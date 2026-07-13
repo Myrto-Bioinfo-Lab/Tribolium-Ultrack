@@ -149,5 +149,7 @@ notes:
     Classical thresholding and watershed candidates are intentionally excluded from this run because
     they were visually judged to produce unsuitable segmentation candidates for this dataset.
 
+    For this run, the active input sources are the folders listed under multi_existing_labels.sources. 
+    The top-level input block is kept for the shared configuration structure.
     The internal Ultrack frame range is 0-30 because the input folders contain only the 31 selected
     frames corresponding to original frames 540-570.

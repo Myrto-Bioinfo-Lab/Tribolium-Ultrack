@@ -1,5 +1,4 @@
 # Template configuration for one Ultrack experiment.
-# The GUI/app can later read and write this file.
 
 name: provided_reference_labels
 
@@ -20,11 +19,7 @@ output:
   overwrite: true
 
 pipeline:
-  # Possible modes planned:
-  # raw_sobel
-  # ultrack_imgproc
-  # cellpose_labels
-  # combined_sources
+  # Active pipeline mode for this run.
   mode: existing_labels
   
 existing_labels:
@@ -44,8 +39,9 @@ raw_sobel:
 
 ultrack_imgproc:
   # These fields are placeholders for the official Ultrack preprocessing functions.
-  use_detect_foreground: true
-  use_robust_invert: true
+  # They are not active for this existing_labels run.
+  use_detect_foreground: false
+  use_robust_invert: false
 
 cellpose:
   enabled: false

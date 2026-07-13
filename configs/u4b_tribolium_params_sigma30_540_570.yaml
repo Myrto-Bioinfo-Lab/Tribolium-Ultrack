@@ -1,5 +1,4 @@
-# Configuration for full-image threshold_robust Ultrack run with border mask.
-# The GUI/app can later read and write this file.
+# Configuration for an uncropped threshold_robust Ultrack run on original frames 540-570 with border mask.
 
 name: u4b_tribolium_params_sigma30_540_570
 
@@ -22,11 +21,7 @@ output:
   overwrite: true
 
 pipeline:
-  # Possible modes planned:
-  # raw_sobel
-  # ultrack_imgproc
-  # cellpose_labels
-  # combined_sources
+  # Active pipeline mode for this run.
   mode: threshold_robust
 
 normalization:
@@ -121,8 +116,9 @@ notes:
     were used as direct segmentation input.
 
     The pipeline mode was threshold_robust. The raw images were normalized using the 1st and 99th
-    intensity percentiles with gamma = 1.0. The active preprocessing parameters were
-    raw_sobel.threshold = 0.05, detect_foreground.sigma = 15.0, and robust_invert.sigma = 3.0.
+    intensity percentiles with gamma = 1.0. The run used a foreground threshold of 0.05,
+    robust_invert.sigma = 3.0, and a border mask. Additional detect_foreground settings are stored
+    in the configuration but were not used by the threshold_robust branch.
 
     A border mask was applied with 40 pixels excluded at the top, bottom, and left borders and
     90 pixels excluded at the right border. No crop was applied. Cellpose was not executed because

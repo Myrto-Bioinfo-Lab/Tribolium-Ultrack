@@ -1,5 +1,4 @@
 # Template configuration for one Ultrack experiment.
-# The GUI/app can later read and write this file.
 
 name: multi_existing_labels_540_570
 
@@ -22,11 +21,7 @@ output:
   overwrite: true
 
 pipeline:
-  # Possible modes planned:
-  # raw_sobel
-  # ultrack_imgproc
-  # cellpose_labels
-  # combined_sources
+  # Active pipeline mode for this run.
   mode: multi_existing_labels
   
 multi_existing_labels:

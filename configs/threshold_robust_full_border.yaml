@@ -1,5 +1,4 @@
-# Configuration for full-image threshold_robust Ultrack run with border mask.
-# The GUI/app can later read and write this file.
+# Configuration for the full-frame threshold_robust Ultrack run with border mask.
 
 name: threshold_robust_full_border
 
@@ -20,11 +19,7 @@ output:
   overwrite: true
 
 pipeline:
-  # Possible modes planned:
-  # raw_sobel
-  # ultrack_imgproc
-  # cellpose_labels
-  # combined_sources
+  # Active pipeline mode for this run.
   mode: threshold_robust
 
 normalization:

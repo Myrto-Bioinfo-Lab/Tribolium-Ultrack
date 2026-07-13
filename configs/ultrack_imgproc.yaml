@@ -1,5 +1,4 @@
-# Template configuration for one Ultrack experiment.
-# The GUI/app can later read and write this file.
+# Configuration for a small 5-frame raw-image-based Ultrack test using ultrack_imgproc preprocessing.
 
 name: ultrack_imgproc
 
@@ -20,11 +19,7 @@ output:
   overwrite: true
 
 pipeline:
-  # Possible modes planned:
-  # raw_sobel
-  # ultrack_imgproc
-  # cellpose_labels
-  # combined_sources
+  # Active pipeline mode for this run.
   mode: ultrack_imgproc
 
 normalization:
