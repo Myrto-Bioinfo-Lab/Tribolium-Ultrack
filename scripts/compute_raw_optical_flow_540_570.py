@@ -1,3 +1,17 @@
+"""Compute raw-image optical flow for original frames 540-570.
+
+This script loads the raw Tribolium image sequence, normalizes the selected
+frames, computes TV-L1 optical flow between consecutive frames, and averages
+the resulting motion vectors in spatial bins.
+
+Outputs are written to the optical_flow_540_570 result folder and include a
+binned CSV file, an NPZ array file and a text summary.
+
+The script computes an image-based motion estimate directly from raw image
+intensities. It is intended as an independent comparison to track-based
+velocity fields.
+"""
+
 from pathlib import Path
 
 import imageio.v2 as imageio
@@ -40,7 +54,7 @@ MIN_PIXELS_PER_BIN = 20
 
 # Display/interpretation note:
 # Depending on optical-flow convention, vector direction may need sign checking.
-# Keep False for first run; visual comparison decides whether sign inversion is needed.
+# Keep False unless visual validation indicates that sign inversion is required.
 FLIP_SIGN = False
 
 

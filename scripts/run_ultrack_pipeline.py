@@ -1,3 +1,18 @@
+"""Run an Ultrack tracking experiment from a YAML configuration.
+
+This script loads image data or existing label masks according to a YAML config,
+creates the foreground and contour inputs required by Ultrack, runs tracking,
+and writes reproducibility information into the output run folder.
+
+Supported pipeline modes include raw-image preprocessing, threshold-based
+foreground generation, single existing-label input and multi-source existing
+label input. The script also stores the used configuration, timing information,
+software versions and selected intermediate arrays when requested by the config.
+
+The script is intended as the main reproducible entry point for the documented
+Tribolium/Ultrack runs.
+"""
+
 import argparse
 import glob
 import os
@@ -590,7 +605,7 @@ def main():
 
         else:
             raise NotImplementedError(
-                f"Pipeline mode is not implemented yet: {mode}"
+                f"Unsupported pipeline mode: {mode}"
             )
 
         phase_times["create_foreground_contours"] = time.perf_counter() - phase_start

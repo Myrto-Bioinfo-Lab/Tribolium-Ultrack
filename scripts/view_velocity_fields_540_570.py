@@ -1,3 +1,15 @@
+"""Open multiple track-based velocity fields for frames 540-570 in napari.
+
+This script loads the normalized raw image sequence for original frames 540-570
+and adds several precomputed binned velocity fields as Napari vector layers.
+
+The viewer is intended for visual comparison of different Ultrack runs in the
+late serosa-motion window. Napari frame 0 corresponds to original frame 540.
+
+The script does not compute new tracking or velocity data. It only displays
+existing CSV outputs.
+"""
+
 from pathlib import Path
 
 import imageio.v2 as imageio

@@ -6,7 +6,7 @@ This script is meant for report figures. It enlarges arrows only visually.
 The numeric values in the CSV remain unchanged.
 
 Example:
-python python_scripts/plot_velocity_quiver_scaled.py \
+python scripts/plot_velocity_quiver_scaled.py \
   --csv Tribolium_Daten/velocity_fields_540_570/multi_existing_labels_540_570/binned_velocity_field.csv \
   --image-dir Tribolium_Daten/cylinder3_projections \
   --start-frame 540 \

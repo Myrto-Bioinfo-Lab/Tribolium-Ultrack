@@ -1,3 +1,17 @@
+"""Compute track-based velocity fields for selected 540-570 runs.
+
+This script reads tracks.csv files from predefined Ultrack runs, computes
+one-frame step vectors for each track, filters unrealistic jumps, and averages
+the remaining vectors in spatial bins.
+
+For each run, the script writes per-track step vectors, a binned velocity field,
+a compressed NPZ representation and a text summary under
+velocity_fields_540_570.
+
+The script is intended for post-processing completed Ultrack runs. It does not
+run segmentation or tracking.
+"""
+
 from pathlib import Path
 
 import numpy as np
@@ -164,7 +178,7 @@ def compute_binned_velocity(step_vectors, image_height, image_width, bin_size):
 
 def save_npz_from_binned(run_out_dir, binned):
     """
-    Save binned velocity field also as npz for later numerical analysis.
+    Save the binned velocity field as a compressed NPZ file for numerical analysis.
 
     This keeps the same information as the CSV, but in array form.
     """

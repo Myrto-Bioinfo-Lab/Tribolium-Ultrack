@@ -1,3 +1,16 @@
+"""Collect compact Ultrack run summary statistics.
+
+This script reads export_summary.txt files from selected Ultrack run folders
+under ../Tribolium_Daten/runs and extracts global tracking statistics such as
+track points, number of tracks, frame range and track-length summaries.
+
+The resulting comparison table is written to
+../Tribolium_Daten/runs/run_summary_comparison.csv.
+
+The script is intended for post-processing already completed Ultrack runs. It
+does not run segmentation or tracking.
+"""
+
 from pathlib import Path
 import re
 import pandas as pd

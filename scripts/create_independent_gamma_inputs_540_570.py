@@ -1,3 +1,13 @@
+"""Create gamma-preprocessed raw image inputs for frames 540-570.
+
+This script loads the raw Tribolium image sequence, normalizes original frames
+540-570, applies selected gamma corrections, and saves the resulting images as
+uint16 TIFF-compatible input images.
+
+The generated image folders can be used as preprocessing variants for subsequent
+segmentation runs. The script does not run Cellpose, CPSAM or Ultrack.
+"""
+
 from pathlib import Path
 
 import imageio.v2 as imageio

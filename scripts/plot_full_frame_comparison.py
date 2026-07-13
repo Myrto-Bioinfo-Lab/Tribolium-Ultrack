@@ -1,3 +1,17 @@
+"""Create bar plots for selected full-frame tracking metrics.
+
+This script reads the full-frame comparison table
+../Tribolium_Daten/runs/full_frame_analysis_comparison.csv and creates a small
+set of bar plots for track counts, mean track length, short tracks, long tracks,
+full-length tracks and fragmentation peaks.
+
+The plots are written to
+../Tribolium_Daten/runs/full_frame_comparison_plots.
+
+The script is intended for post-processing existing summary tables. It does not
+run segmentation or tracking.
+"""
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt

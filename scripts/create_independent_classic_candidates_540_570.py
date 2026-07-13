@@ -1,3 +1,16 @@
+"""Create classical segmentation candidate masks for frames 540-570.
+
+This script loads the raw Tribolium image sequence, normalizes original frames
+540-570, and generates independent classical label-mask candidates using
+thresholding and watershed-based segmentation.
+
+The generated PNG label images use the *_cp_masks.png suffix for compatibility
+with the existing label-mask loading workflow. They are not Cellpose outputs.
+
+The script is intended to create additional comparison candidates for Ultrack.
+It does not run Ultrack tracking.
+"""
+
 from pathlib import Path
 
 import imageio.v2 as imageio

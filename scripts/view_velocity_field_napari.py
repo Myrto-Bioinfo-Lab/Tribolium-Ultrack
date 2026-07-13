@@ -9,7 +9,7 @@ almost invisible on a 1600 px image.
 Examples
 --------
 540-570 window with raw images:
-python python_scripts/view_velocity_field_napari.py \
+python scripts/view_velocity_field_napari.py \
   --csv Tribolium_Daten/velocity_fields_540_570/multi_existing_labels_540_570/binned_velocity_field.csv \
   --image-dir Tribolium_Daten/cylinder3_projections \
   --start-frame 540 \
@@ -18,7 +18,7 @@ python python_scripts/view_velocity_field_napari.py \
   --vector-scale 10
 
 Full-frame selected run with downscaled raw images:
-python python_scripts/view_velocity_field_napari.py \
+python scripts/view_velocity_field_napari.py \
   --csv Tribolium_Daten/velocity_fields_full/multi_cellpose_variants_no_baseline_all_frames/binned_velocity_field.csv \
   --image-dir Tribolium_Daten/cylinder3_projections \
   --start-frame 0 \

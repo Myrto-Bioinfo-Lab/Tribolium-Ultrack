@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Generate independent CPSAM/Cellpose candidate masks for original frames 540-570.
+#
+# The script runs Cellpose with the cpsam pretrained model on raw and
+# gamma-preprocessed input folders and stores one output mask folder per
+# candidate setting. Existing complete 31-frame outputs are skipped.
+#
+
 BASE="<PROJECT_ROOT>/Tribolium_Daten"
-SCRIPT_DIR="<PROJECT_ROOT>/python_scripts"
+SCRIPT_DIR="<PROJECT_ROOT>/scripts"
 LOG_DIR="${SCRIPT_DIR}/logs"
 
 mkdir -p "${LOG_DIR}"

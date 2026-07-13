@@ -1,3 +1,19 @@
+"""Export tables and summaries from a completed Ultrack run.
+
+This script reads a finished Ultrack output directory, loads the stored Ultrack
+metadata, converts the result to a tracks table, and writes the exported results
+back into the same run folder.
+
+Outputs:
+- tracks.csv
+- track_summary.csv
+- tracks_per_frame.csv
+- export_summary.txt
+
+The script expects one command-line argument: the path to the completed Ultrack
+output directory. It does not run segmentation or tracking.
+"""
+
 import os
 import sys
 import yaml

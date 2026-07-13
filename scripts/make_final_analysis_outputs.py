@@ -5,8 +5,8 @@ Create final plots, quiver images and optional videos for the Tribolium/Ultrack 
 Run from the project root, for example:
 
     cd <PROJECT_ROOT>
-    python python_scripts/make_final_analysis_outputs.py --project-root .
-    python python_scripts/make_final_analysis_outputs.py --project-root . --make-videos
+    python scripts/make_final_analysis_outputs.py --project-root .
+    python scripts/make_final_analysis_outputs.py --project-root . --make-videos
 
 The script expects the existing project structure:
 
@@ -16,7 +16,7 @@ The script expects the existing project structure:
     Tribolium_Daten/velocity_fields_540_570/<run_name>/track_step_vectors.csv
     Tribolium_Daten/optical_flow_540_570/raw_optical_flow_binned.csv
 
-It is intentionally defensive: if a file is missing, that part is skipped with a warning.
+If a file is missing, that part is skipped with a warning.
 """
 
 from __future__ import annotations

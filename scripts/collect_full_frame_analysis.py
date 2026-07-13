@@ -1,3 +1,17 @@
+"""Collect full-frame tracking summary statistics.
+
+This script reads selected Ultrack run outputs from ../Tribolium_Daten/runs,
+extracts global tracking statistics from export_summary.txt files, and adds
+additional track-length and fragmentation metrics from detailed track-analysis
+CSV files when available.
+
+The resulting comparison table is written to
+../Tribolium_Daten/runs/full_frame_analysis_comparison.csv.
+
+The script is intended for post-processing already completed Ultrack runs. It
+does not run segmentation or tracking.
+"""
+
 from pathlib import Path
 import re
 

@@ -1,3 +1,15 @@
+"""Create independent raw-image preprocessing candidates for frames 540-570.
+
+This script loads the raw Tribolium image sequence, normalizes original frames
+540-570, and writes several independent preprocessing outputs: normalized raw
+images, threshold-based foreground masks, robust-invert-like contour signals
+and Canny edge signals.
+
+The outputs are intended as exploratory raw-image candidate inputs for Ultrack
+or for comparison with label-based approaches. The script does not run Ultrack
+tracking.
+"""
+
 from pathlib import Path
 
 import imageio.v2 as imageio
