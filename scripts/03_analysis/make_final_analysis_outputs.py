@@ -5,8 +5,8 @@ Create final plots, quiver images and optional videos for the Tribolium/Ultrack 
 Run from the project root, for example:
 
     cd <PROJECT_ROOT>
-    python scripts/make_final_analysis_outputs.py --project-root .
-    python scripts/make_final_analysis_outputs.py --project-root . --make-videos
+    python scripts/03_analysis/make_final_analysis_outputs.py --project-root .
+    python scripts/03_analysis/make_final_analysis_outputs.py --project-root . --make-videos
 
 The script expects the existing project structure:
 

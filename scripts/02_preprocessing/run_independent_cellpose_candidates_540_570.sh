@@ -8,9 +8,10 @@ set -euo pipefail
 # candidate setting. Existing complete 31-frame outputs are skipped.
 #
 
-BASE="<PROJECT_ROOT>/Tribolium_Daten"
-SCRIPT_DIR="<PROJECT_ROOT>/scripts"
-LOG_DIR="${SCRIPT_DIR}/logs"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+BASE="${PROJECT_ROOT}/../Tribolium_Daten"
+LOG_DIR="${PROJECT_ROOT}/logs/cellpose"
 
 mkdir -p "${LOG_DIR}"
 

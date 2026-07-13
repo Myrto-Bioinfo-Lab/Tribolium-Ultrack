@@ -79,19 +79,20 @@ environment_conda_list.txt
 ```
 
 ## Important scripts
+A detailed overview of all scripts, their roles and the recommended execution order is provided in `scripts/README.md`.
 
 ```text
-scripts/run_ultrack_pipeline.py
-scripts/export_ultrack_results.py
-scripts/collect_run_summaries.py
-scripts/collect_full_frame_analysis.py
-scripts/compute_track_velocity_field_540_570.py
-scripts/compute_raw_optical_flow_540_570.py
-scripts/compute_full_frame_velocity_field.py
-scripts/compute_velocity_derivatives.py
-scripts/make_final_analysis_outputs.py
-scripts/plot_velocity_quiver_scaled.py
-scripts/view_velocity_field_napari.py
+scripts/01_pipeline/run_ultrack_pipeline.py
+scripts/01_pipeline/export_ultrack_results.py
+scripts/03_analysis/collect_run_summaries.py
+scripts/03_analysis/collect_full_frame_analysis.py
+scripts/03_analysis/compute_track_velocity_field_540_570.py
+scripts/03_analysis/compute_raw_optical_flow_540_570.py
+scripts/03_analysis/compute_full_frame_velocity_field.py
+scripts/03_analysis/compute_velocity_derivatives.py
+scripts/03_analysis/make_final_analysis_outputs.py
+scripts/04_visualization/plot_velocity_quiver_scaled.py
+scripts/04_visualization/view_velocity_field_napari.py
 ```
 
 ## Additional documentation
